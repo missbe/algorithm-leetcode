@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	char *s1="Hello ";
+	char *s2="123";
+	char a[20];
+	strcpy(a,s1);  //字符串拷贝string copy
+	cout<<(strcmp(a,s1)==0 ? " " :" not ")<<"equal\n";//字符串比较 string compare
+	cout<<strcat(a,s2)<<endl; //字符串连接string concat
+	cout<<strrev(a)<<endl;//将一个字符串前后颠倒string reverse
+	cout<<strset(a,'c')<<endl;//将字符串设置为指定字符string set
+	cout<<(strstr(s1,"ell") ? " " : " not ")<<"found\n";//查找指定字符串string substring
+	cout<<(strchr(s1,'H') ? " " : " not ")<<"found\n"; //查找指定字符string char
+}
+
+select * from airtcle
+insert into Airtcle values('love','love',2,'2017-12-25')
+
+airtcle_id
+airtcle_title
+airtcle_content
+airtcle_admin_id
+airtcle_items_id
+airtcle_updatetime

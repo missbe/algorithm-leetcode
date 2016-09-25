@@ -1,0 +1,82 @@
+#include <stdio.h>
+#define MAXSIZE 100
+typedef struct node
+{
+	int date[MAXSIZE];
+	int length; 
+}SeqList, *PSeqList;
+SeqList L;
+PSeqList PL;
+PSeqList Init_SeqList() 
+/*创建一顺序表，入口参数无，返回一个指向顺序指针，指针值为0表示分配空间失败*/ 
+{
+	PSeqList PL;
+	PL= (PSeqList)malloc(sizeof(SeqList));
+	if(PL)                       /*若PL=0表示分配空间失败*/ 
+	PL->length=0;
+	return PL;
+}
+int Length_SeqList(SeqList L)
+/*求顺序表的长度，入口参数：为顺序表，返回表长*/ 
+{
+	return L.length; 
+} 
+int Location_SeqList(SeqList L,int x)
+/*顺序表检索，入口数为顺序表，检索元素，返回元素位置，0表示查找失败*/ 
+{
+	int i=0;
+	while (i<L.length && L.date[i] != x)
+	i++;
+	if (i>L.length)
+	return 0;
+	else
+	return i+1; 
+} 
+int Insert_SeqList(PSeqList PL,int i,int x)
+/*在顺序表的第i个元素之前插入x,入口参数为顺序表指针，插入位置，插入元素，
+返回标志，1表示成功，0表示插入位置不合法，-1表示溢出，-2表示表不存在 */ 
+{
+	int j;
+	if (!PL)                        /*表不存在，不能插入*/ 
+	{
+		printf("表不存在。");
+		return -2;
+	} 
+	if (PL->length >= MAXSIZE)      /*表空间已满，不能插入*/ 
+	{
+		printf("表溢出。");
+		return -1;
+	} 
+	if (i<1 || i>PL->length+1)      /*检查插入位置的合法性*/ 
+	{
+		printf("插入位置不合法。");
+		return 0;
+	}
+	for (j=PL->length-1;j>=i-1;j--)
+	{
+		PL->date[j+1]=PL->date[j];/*移动元素，所有向后移*/ 
+	}
+	PL->date[i-1]=x;              /*新元素插入*/ 
+	PL->length++;                 /*表长加1*/ 
+	return 1;                     /*插入成功*/ 
+}  
+int Delete_SeqList(PSeqList PL,int i)
+/*删除顺序表第i个元素，入口参数：顺序表指针，删除元素位置，返回元素位置
+返回标志1表示成功，0表示删除位置不合法，-1表示表不存在*/
+{
+	int j;
+	if (!PL)                         /*表不存在，不能删除*/ 
+	{
+		printf("表不存在。");
+		return -1;
+	}
+	if (i<1 || i>PL->length)    /*检查位置的合法性*/ 
+	{
+		printf("插入位置不合法。");
+		return 0;
+	} 
+	for (j=i;j<PL->length;j++)
+	PL->date[j-1]=PL->date[j];     /*向上移动*/ 
+	PL->length--;
+	return 1;                      /*删除成功*/ 
+} 

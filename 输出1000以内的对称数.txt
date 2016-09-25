@@ -1,0 +1,15 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	int hundred,decade,unit;
+	for(int n=100;n<1000;n++)
+	{
+		hundred=n/100;
+		decade=n/10%10;
+		unit=n%10;
+		if(unit==hundred)
+			cout<<setw(4)<<n<<" is a duichenshu"<<endl;
+	}
+}

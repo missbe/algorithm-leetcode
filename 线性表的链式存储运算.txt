@@ -1,0 +1,70 @@
+#include <stdio.h>
+typedef struct node
+{
+	int date;           /*每个元素信息*/ 
+	struct node *next;  /*存放后继元素的地址*/ 
+} LNode,*LinkList;
+LinkList H;
+LinkList Creat_LinkList()
+{
+	/*创建空的单链表，入口参数：无；返回值：单链表的头指针，0代表创建失败*/
+	LinkList H;
+	H=(LinkList)malloc(sizeof(LNode));
+	if(H)      /*确认创建头结点是否成功*/ 
+	H->next=NULL;
+	return H; 
+}
+void Destroy_LinkList(LinkList *H)
+{
+	/*销毁单链表，入口参数：单链表头指针的地址*/
+	LinkList p,q;
+	p= *H;         /*释放单链表的所有结点*/
+	while(p)
+	{
+		p=q;
+		p=p->next;
+		free(q);
+	} 
+	*H=NULL;
+}
+int Length_LinkList(LinkList H)
+{
+	/*求单链表表长，入口参数：单链表头指针，出口参数：表长，-1表示单链表不存在*/
+	LinkList p=H;         /*p指向头结点*/
+	int Count=-1;         /*H带头结点所以从-1开始*/
+	while(p)              /*p所指的是count+1个结点*/
+	{
+		p=p->next;
+		Count++;
+	} 
+	return Count;
+}
+LinkList Locate_LinkList(LinkList H,int i)/*********按序号查找*************/ 
+{
+	/*i不正确或者链表不存在，则返回NULL，i==0返回头指针，否则返回第i个结点*/
+	LinkList p;
+	int j;
+	p=H; j=0; 
+	while(p && j<i)       /*查找第i个结点*/
+	{
+		p=p->next;
+		j++;
+	} 
+	if(j!=i||p)
+	{
+		printf("参数错误。");
+		return NULL;
+	}
+	return p;
+}
+int main()
+{
+	int i,j;
+	for(i=1;i<=9;i++)
+	{
+	for(j=1;j<=i;j++)
+	      printf("%dx%d=%-4d",i,j,i*j);
+	      printf("\n");
+	} 
+	return 0;
+}

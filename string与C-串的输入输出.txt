@@ -1,0 +1,13 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	/******getline将行末的驾车符过滤掉****/
+	char a[40];
+	cin.getline(a,40);//一个个的读字符
+	cout<<a<<endl;
+	/**********字符的单个输入*********/
+	for(char ch;(ch=cin.get())!='\n'; )
+		cout<<ch;
+	cout<<endl;
+}

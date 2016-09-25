@@ -1,0 +1,17 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	float sum=0;
+	float high=100,dump=high/2.0;
+	sum=high;
+
+	for(int i=2;i<=3;i++)
+	{	
+		sum=sum+dump*2;
+		dump=dump/2.0;	
+	}
+	cout<<setfill('@')<<setw(5)<<sum<<endl;
+	cout<<setw(7)<<dump<<endl;
+}

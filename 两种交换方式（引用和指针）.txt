@@ -1,0 +1,43 @@
+【1】用指针的方式来交换
+//-----------------------------------
+#include<iostream>
+#include<iomanip>
+using namespace std;
+//-------------------------------------
+void MySwap(int* a,int* b);
+int main()
+{
+	int a=16, b=48;
+	cout<<" a= "<<a<<" "<<" b= "<<b<<endl;
+	MySwap(&a,&b);
+	cout<<"After Being Swapped: \n";
+	cout<<" a= "<<a<<", b= "<<b<<endl;
+}//--------------------------------
+void MySwap(int* a,int* b)
+{
+	int temp=*a;
+	*a = *b;
+	*b = temp;
+}//---------------------------------
+【2】另一种引用的方式来交换
+//-----------------------------------
+#include<iostream>
+#include<iomanip>
+using namespace std;
+//-------------------------------------
+void MySwap(int* a,int* b);
+int main()
+{
+	int a=16, b=48;
+	int &a_1=a, &b_1=b;
+	cout<<" a= "<<a<<" "<<" b= "<<b<<endl;
+	MySwap(&a,&b);
+	cout<<"After Being Swapped: \n";
+	cout<<" a= "<<a_1<<", b= "<<b_1<<endl;
+}//--------------------------------
+void MySwap(int* a,int* b)
+{
+	int temp=*a;
+	*a = *b;
+	*b = temp;
+}//---------------------------------

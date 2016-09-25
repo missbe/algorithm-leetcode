@@ -1,0 +1,28 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	int wanshu[12];
+	for(int i=1;i<=1000;i++)
+	{
+		int k=0, sum=i;
+		for(int j=1;j<i;j++)
+		{
+			if(0==i%j)
+			{
+				wanshu[k]=j;
+				k++;
+				sum=sum-j;
+			}
+		}
+
+		if(!sum)
+		{
+			cout<<setw(4)<<i<<endl;
+			for(int m=0;m<k;m++)
+				cout<<setw(4)<<wanshu[m];
+			cout<<endl;
+		}
+	}
+}

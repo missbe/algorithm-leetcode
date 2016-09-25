@@ -1,0 +1,27 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	int ten_rmb=10,five_rmb=5,one_rmb=1;
+	for(int i=1;i<10;i++)
+		for(int j=1;j<20;j++)
+			for(int k=1;k<100;k++)
+			{
+				if((i*ten_rmb+j*five_rmb+k*one_rmb==100) && i && j && k)
+				{
+					cout<<"-----------This one way-----------"<<endl;
+			    	cout<<"|---------------------------------|"<<endl;
+				    cout<<"|---------------------------------|"<<endl;
+					cout<<"10-RMB have "<<i<<"paper "<<endl;
+					cout<<"5 --RMB have "<<j<<"paper "<<endl;
+					cout<<"1 --RMB have "<<k<<"paper "<<endl;
+					cout<<"|---------------------------------|"<<endl;
+				    cout<<"|---------------------------------|"<<endl;
+					cout<<"-------------The  end--------------"<<endl;
+					cout<<"\n \n";
+				}
+				else
+					continue;
+			}
+}

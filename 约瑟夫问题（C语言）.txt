@@ -1,0 +1,41 @@
+int josephus_SeqList(PSeqLis josephus_seq,int s,int m)
+{
+	/*求解约瑟夫问题的出列元素序列入口参数：已经存放数据的顺序表，起始位置s
+	出列数m，出口参数：1表示成功，0表示表中没有元素*/
+	int s1,i,w;
+	if(!josephus_seq->length)
+	{
+		printf("表中无元素。");
+		return 0; 
+	}  
+	s1=s-1;                                  /*date数组从0开始*/
+	printf("输出约瑟夫序列：");
+	for (i=josephus_seq->length;i>0;i--)
+	{
+		s1=(s1+m-1)%i;                      /*找到列元素的下标*/ 
+		w=josephus_seq->date[s1];
+		printf("%d\t",w);
+		Delete_SeqList(josephus_seq,s1+1); /*删除列元素*/ 
+	}
+	return 1;                            /*成功返回*/ 
+} 
+int Delete_SeqList(PSeqList PL,int i)
+/*删除顺序表第i个元素，入口参数：顺序表指针，删除元素位置，返回元素位置
+返回标志1表示成功，0表示删除位置不合法，-1表示表不存在*/
+{
+	int j;
+	if (!PL)                         /*表不存在，不能删除*/ 
+	{
+		printf("表不存在。");
+		return -1;
+	}
+	if (i<1 || i>PL->length)    /*检查位置的合法性*/ 
+	{
+		printf("插入位置不合法。");
+		return 0;
+	} 
+	for (j=i;j<PL->length;j++)
+	PL->date[j-1]=PL->date[j];     /*向上移动*/ 
+	PL->length--;
+	return 1;                      /*删除成功*/ 
+} 

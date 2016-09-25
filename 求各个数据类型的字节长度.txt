@@ -1,0 +1,9 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	cout<<"long int "<<sizeof(long int)<<" byte "<<endl;
+	cout<<" int "<<sizeof(int)<<" byte "<<endl;
+	cout<<" char "<<sizeof(char)<<" byte "<<endl;
+	cout<<" bool "<<sizeof(bool)<<" byte "<<endl;
+}

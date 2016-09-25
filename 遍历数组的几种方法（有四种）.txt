@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int sum[5]={0};
+	int iArray[]={1,4,2,7,13,32,21,48,16,30};
+	int size=sizeof(iArray)/sizeof(*iArray);
+	/*********测量数组的长度，用整个数组去除以一个量的长度********/
+	int *iPtr=iArray;       
+	/***********定义一个整形指针来获取数组的首地址**********/
+
+	for(int n=0;n<size;++n) /*****方法一采用数组形式********/
+		sum[3] += iPtr[n];
+
+	for(int n1=0;n1<size;++n1)/*方法二指针加每个元素的地址*/
+		sum[2] += *(iPtr+n1);
+
+	for(int n2=0;n2<size;++n2)/****方法三指针自加形式*****/
+		sum[1] += *iPtr++;
+
+	for(int n4=0;n4<size;++n4)/****方法四直接用数组下标形式**/
+		sum[0] += iArray[n4];
+
+	for(int n3=0;n3<size;++n3)/***数组自加每个元素的地址形式**/
+		sum[4] += *(iArray+n3);
+
+	for(int i=0;i<5;i++)
+		cout<<sum[i]<<endl;
+	return 1;
+}
