@@ -1,0 +1,23 @@
+#include<iostream>
+#include<cmath>
+#include<vector>
+using namespace std;
+int main()
+{
+	int a[7]={1,2,5,3,7,9,8};
+	vector<int> b(a,a+7);
+	vector<int> va(a,a+7);
+	for(int i=0;i<va.size();++i)
+		cout<<a[i]<<" ";
+	cout<<endl;
+	for(vector<int>::iterator it=b.begin();it != b.end();++it)//第一种
+		cout<<*it<<" ";
+	cout<<endl;
+	for(vector<int>::iterator it_1=va.begin();it_1 != va.end();++it_1)//第二种
+		cout<<*it_1<<" ";
+	cout<<endl;
+	for(vector<int>::iterator it_2=a.begin();it != a.end();++it_2)//第三种有问题
+		cout<<*it_2<<" ";
+	cout<<endl;
+	return 1;
+}

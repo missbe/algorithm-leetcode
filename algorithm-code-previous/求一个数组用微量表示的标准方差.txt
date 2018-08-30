@@ -1,0 +1,28 @@
+#include<iostream>
+#include<vector>
+#include<cmath>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	int start[]={6,3,7,1,4,8,2,9,11,5};
+	vector<int> then(start,start+10);
+	int n=then.size();
+	float average, sum=0;
+	double s;
+
+	for(vector<int>::iterator it=then.begin();it != then.end();++it)
+		sum += *it;
+	average=sum/(float)n;
+    cout<<"Sum_0 is "<<setw(5)<<sum<<" "<<"Average is "<<setw(5)<<average<<endl;
+
+	sum=0;
+	for(vector<int>::iterator it_1=then.begin();it_1 != then.end();++it_1)
+		sum=sum+(*it_1-average)*(*it_1-average);
+	sum=sum/(float)n;
+	cout<<"Sum_1 is "<<setw(7)<<sum<<endl;
+
+	s=sqrt(sum);
+	cout<<"S is "<<setw(5)<<s<<endl;
+	return 1;
+}

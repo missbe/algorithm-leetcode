@@ -1,0 +1,66 @@
+//------------------------------------------
+//判断字符串是否相等
+//-------------------------------------------
+#include<iostream>
+#include<fstream>
+#include<algorithm>
+#include<string>
+//------------------------------------------
+using namespace std;
+//--------------------------------------
+int main()
+{
+	ifstream in("string.txt");
+	for(string s,t; in>>s>>t; )
+	{
+		sort(s.begin(),s.end());
+		sort(t.begin(),t.end());
+		cout<<(s==t ? "yes\n" : "no\n");
+	}
+}//---------------------------------------
+//------------------------------------------
+//判断字符串是否相等
+//-------------------------------------------
+#include<iostream>
+#include<fstream>
+#include<algorithm>
+#include<string>
+//----------------------------------------------------
+using namespace std;
+//-----------------------------------------------------
+int main()
+{
+	ifstream in("string.txt");
+	for(string s,t; in>>s>>t; )
+	{
+		/*count计数方法也在C++标准中*/
+		int scl=count(s.begin(),s.end(),'1');
+		int sc0=count(s.begin(),s.end(),'0');
+		int tcl=count(t.begin(),t.end(),'1');
+		int tc0=count(t.begin(),t.end(),'0');
+		cout<<(scl==tcl && sc0==tc0 ? "yes\n" : "no\n");
+	}
+}//-----------------------------------------------------------
+//------------------------------------------
+//判断字符串是否相等
+//-------------------------------------------
+#include<iostream>
+#include<fstream>
+#include<algorithm>
+#include<string>
+//------------------------------------------
+using namespace std;
+//--------------------------------------
+int main()
+{
+	ifstream in("string.txt");
+	for(string s,t; in>>s>>t; )
+	{
+		/*count计数方法也在C++标准中*/
+		int scl=count(s.begin(),s.end(),'1');
+	
+		int tcl=count(t.begin(),t.end(),'1');
+		
+		cout<<(scl==tcl && s.length()==t.length() ? "yes\n" : "no\n");
+	}
+}//--------------------------------------------

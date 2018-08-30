@@ -1,0 +1,123 @@
+一.count函数
+
+algorithm头文件定义了一个count的函数，其功能类似于find。这个函数使用一对迭代器和一个值做参数，返回这个值出现次数的统计结果。
+
+编写程序读取一系列int型数据，并将它们存储到vector对象中，然后统计某个指定的值出现了多少次。
+
+核心代码：
+
+cout<<count(ivec.begin() , ivec.end() , searchValue)
+ 
+
+
+具体实现：
+
+ 
+
+复制代码
+ 1 //读取一系列int数据，并将它们存储到vector对象中，
+ 2 //然后使用algorithm头文件中定义的名为count的函数，
+ 3 //统计某个指定的值出现了多少次
+ 4 #include<iostream>
+ 5 #include<vector>
+ 6 #include<algorithm>
+ 7 using namespace std;
+ 8  
+ 9 int main()
+10 {
+11     int ival , searchValue;
+12     vector<int> ivec;
+13  
+14     //读入int型数据并存储到vector对象中，直至遇到文件结束符
+15     cout<<"Enter some integers(Ctrl+Z to end): "<<endl;
+16     while(cin >> ival)
+17         ivec.push_back(ival);
+18  
+19     cin.clear(); // 使输入流重新有效
+20  
+21     //读入欲统计其出现次数的int值
+22     cout<<"Enter an integer you want to search: "<<endl;
+23     cin>>searchValue;
+24  
+25     //使用count函数统计该值出现的次数并输出结果
+26     cout<<count(ivec.begin() , ivec.end() , searchValue)
+27         <<"  elements in the vector have value "
+28         <<searchValue<<endl;
+29  
+30     return 0;
+31 }
+复制代码
+ 
+
+ 
+
+ 二.count_if函数
+
+ 
+
+count_if ：返回区间中满足指定条件的元素数目。
+
+template<class InputIterator, class Predicate>
+
+   typename iterator_traits<InputIterator>::difference_type count_if(
+
+      InputIterator _First,
+
+      InputIterator _Last,
+
+      Predicate _Pred
+
+   );
+
+Parameters
+
+_First 输入迭代器，指向将被搜索的区间第一个元素的位置。
+
+_Last 输入迭代器，指向将被搜索的区间最后一个元素后面的。
+
+_Pred 用户自定义的 predicate function object ，定义了元素被计数需满足的条件。 predicate 只带一个参数，返回 true 或 false.
+
+Return Value
+
+满足断言（predicate）（也称为谓词）指定条件的元素数。
+
+Remarks
+
+这个模板函数是书法count的泛化版本,用断言指定的条件代替等于一个指定的值。
+
+Example
+
+复制代码
+ 1 #include <vector>
+ 2 #include <algorithm>
+ 3 #include <iostream>
+ 4 
+ 5 bool greater10(int value)
+ 6 {
+ 7     return value >10;
+ 8 }
+ 9 
+10 int main()
+11 {
+12     using namespace std;
+13     vector<int> v1;
+14     vector<int>::iterator Iter;
+15 
+16     v1.push_back(10);
+17     v1.push_back(20);
+18     v1.push_back(10);
+19     v1.push_back(40);
+20     v1.push_back(10);
+21 
+22     cout << "v1 : ";
+23     for (Iter = v1.begin(); Iter != v1.end(); Iter++)
+24        cout << *Iter << " ";
+25     cout << endl;
+26 
+27 
+28     vector<int>::size_type  result1 = count_if(v1.begin(), v1.end(), greater10);  //count_if算法返回使谓词函数返回条件成立的元素个数
+29     cout << "The number of elements in v1 greater than 10 is: "
+30          << result1 << "." << endl;
+31 
+32     return 0;
+33 }

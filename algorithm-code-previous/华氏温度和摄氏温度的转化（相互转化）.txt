@@ -1,0 +1,164 @@
+//------------------------------------------------
+//华氏温度和摄氏温度的转化
+//------------------------------------------------
+#include <iostream>
+//---------------------------------------------------
+void convertTemprature(double tempIn,char typeIn);
+void convertTemprature(int tempIn,char typeIn);
+//-----------------------------------------------------
+int main()
+{
+	//华氏温度 == 摄氏温度 * 9.0/5.0 + 32
+	
+
+	double tempIn;
+	char typeIn;
+	int tempIn_one;
+
+	std::cout<<"请亲们以【xx.x C】或者【xx.c F】格式输入一个温度：";
+	std::cin>>tempIn>>typeIn;
+	std::cin.ignore(100,'\n');
+	std::cout<<"\n";
+	convertTemprature(tempIn,typeIn);
+
+	std::cout<<"请亲们以【xx C】或者【xx F】格式输入一个温度：";
+	std::cin>>tempIn_one>>typeIn;
+	std::cin.ignore(100,'\n');
+	std::cout<<"\n";
+	convertTemprature(tempIn_one,typeIn);
+
+
+	return 0;
+}//----------------------------------------------
+void convertTemprature(double tempIn,char typeIn)
+{
+	const unsigned short ADD_SUBTRACT = 32;
+	const double RATIO = 9.0/5.0;
+
+	float tempOut;
+	char typeOut;
+
+	switch(typeIn)
+	{
+	case 'C':
+	case 'c':
+		tempOut = tempIn * RATIO + ADD_SUBTRACT;
+		typeOut = 'F';
+		typeIn = 'C';
+		break;
+	case 'F':
+	case 'f':
+		tempOut = (tempIn - ADD_SUBTRACT) / RATIO;
+		typeOut = 'C';
+		typeIn = 'F';
+		break;
+	default :
+		typeOut = 'E';
+		break;
+	}
+
+	if(typeOut != 'E')
+	{
+		std::cout<<tempIn <<typeIn <<" = "
+			<<tempOut <<typeOut<<"\n\n";
+	}
+	else
+	{
+		std::cout<<" 输入错误！"<<"\n\n";
+	}
+
+	std::cout<<"请输入任意字符结束程序！" <<"\n\n";
+	std::cin.get();
+}//-------------------------------------------------
+void convertTemprature(int tempIn,char typeIn)
+{
+	const unsigned short ADD_SUBTRACT = 32;
+	const double RATIO = 9.0/5.0;
+
+	int tempOut;
+	char typeOut;
+
+	switch(typeIn)
+	{
+	case 'C':
+	case 'c':
+		tempOut = tempIn * RATIO + ADD_SUBTRACT;
+		typeOut = 'F';
+		typeIn = 'C';
+		break;
+	case 'F':
+	case 'f':
+		tempOut = (tempIn - ADD_SUBTRACT) / RATIO;
+		typeOut = 'C';
+		typeIn = 'F';
+		break;
+	default :
+		typeOut = 'E';
+		break;
+	}
+
+	if(typeOut != 'E')
+	{
+		std::cout<<tempIn <<typeIn <<" = "
+			<<tempOut <<typeOut<<"\n\n";
+	}
+	else
+	{
+		std::cout<<" 输入错误！"<<"\n\n";
+	}
+
+	std::cout<<"请输入任意字符结束程序！" <<"\n\n";
+	std::cin.get();
+}//-------------------------------------------------
+
+#include <iostream>
+
+int main()
+{
+	//华氏温度 == 摄氏温度 * 9.0/5.0 + 32
+	const unsigned short ADD_SUBTRACT = 32;
+	const double RATIO = 9.0/5.0;
+
+	double tempIn, tempOut;
+	char typeIn, typeOut;
+
+	std::cout<<"请亲们以【xx.x C】或者【xx.c F】格式输入一个温度：";
+	std::cin>>tempIn>>typeIn;
+	std::cin.ignore(100,'\n');
+	std::cout<<"\n";
+
+	switch(typeIn)
+	{
+	case 'C':
+	case 'c':
+		tempOut = tempIn * RATIO + ADD_SUBTRACT;
+		typeOut = 'F';
+		typeIn = 'C';
+		break;
+	case 'F':
+	case 'f':
+		tempOut = (tempIn - ADD_SUBTRACT) / RATIO;
+		typeOut = 'C';
+		typeIn = 'F';
+		break;
+	default :
+		typeOut = 'E';
+		break;
+	}
+
+	if(typeOut != 'E')
+	{
+		std::cout<<tempIn <<typeIn <<" = "
+			<<tempOut <<typeOut<<"\n\n";
+	}
+	else
+	{
+		std::cout<<" 输入错误！"<<"\n\n";
+	}
+
+	std::cout<<"请输入任意字符结束程序！" <<"\n\n";
+	std::cin.get();
+
+
+	return 0;
+}

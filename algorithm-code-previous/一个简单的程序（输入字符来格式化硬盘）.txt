@@ -1,0 +1,27 @@
+#include<iostream>
+
+int main()
+{
+	char answer;
+
+	std::cout<<"请问可以格式化你的硬盘吗？【y/n】"<<"\n\n\n\n";
+	std::cin>>answer;
+
+	switch(answer)
+	{
+	case 'Y':
+	case 'y':
+		std::cout<<"随便格式化硬盘是不好的，会让妈妈骂的！"<<"\n\n\n\n";
+		break;
+	case 'N':
+	case 'n':
+		std::cout<<"你的输入是明智的！"<<"\n\n\n\n";
+		break;
+	default :
+		std::cout<<"你的输入是错误的！"<<"\n\n\n\n";
+	}
+	std::cin.get();
+	std::cout<<"请输入任意字符退出！"<<"\n\n";
+	std::cin.get();
+	return 0;
+}

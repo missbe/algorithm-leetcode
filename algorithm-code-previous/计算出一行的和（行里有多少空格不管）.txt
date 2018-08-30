@@ -1,0 +1,95 @@
+//--------------------------------
+//不计空格-计算出一行数据的和
+//---------------------------------
+#include<iostream>
+#include<iomanip>
+#define N 81
+//-------------------------
+int input(int array[]);     /*返回个数*/
+int plus(int array[],int size);/*进行相加*/
+using namespace std;
+//-----------------------
+int main()
+{
+	cout<<"----->请输入数据:"<<endl;
+	int i=-1, Array[N];
+	int size=input(Array);
+	cout<<"----->输入的和是:"<<endl;
+	cout<<plus(Array,size)<<endl;
+	return 0;
+}//--------------------------
+int input(int array[])
+{
+	int i=-1, count=0;
+	while(1)
+	{
+		i++, count++;
+		cin>>array[i];
+		char ch=getchar();
+		if(ch=='\n')
+			break;
+	}
+	return count;
+}//-------------
+int plus(int array[],int size)
+{
+	int i=0, sum=0;
+	for(;i<size;i++)
+	{
+		if(array[i]!=' ')
+			sum += array[i];
+		else
+			continue;
+	}
+	return sum;
+}//----------------------------
+【C语言版-->小甲鱼】
+//-----------------------------------
+//有空格的求和
+//--------------------------------
+#include<stdio.h>
+#include<stdlib.h>
+//----------------------------------
+void main()
+{
+	int i;
+	int sum = 0;
+	char ch;
+
+	printf("------请输入数据和任意字符----------\n");
+
+	while(scanf("%d",&i)==1)
+	{
+		sum += i;
+		while((ch=getchar())==' ')//屏蔽空格
+			;
+		if(ch=='\n')
+			break;
+		ungetc(ch,stdin);//将变量ch中存放的字符退回给stdin流
+	}
+	printf("结果是--->%d",sum);
+	printf("\n");
+	system("pause");
+}//---------------------------------------
+【C++语言版-->小甲鱼】
+//------------------------------
+#include<iostream>
+//----------------------------
+using namespace std;
+//-----------------------------
+int main()
+{
+	int sum=0;
+	cout<<"--";
+	int i;
+	while(cin>>i)
+	{
+		sum += i;
+		while(cin.peek()==' ')
+			cin.get();
+		if(cin.peek()=='\n')
+			break;
+	}
+	cout<<"---"<<sum<<endl;
+	return 0;
+}//--------------------------------

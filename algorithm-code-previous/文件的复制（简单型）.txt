@@ -1,0 +1,18 @@
+//--------------------------------
+//复制文件
+//--------------------------------
+#include<iostream>
+#include<fstream>
+#include<string>
+using namespace std;
+//--------------------------------
+int main()
+{
+	
+	ifstream in("abc.txt");
+	ofstream out("abcd.txt");
+	for(string str;getline(in,str); )
+		   /*从输入文件中读入一行数据放入str中*/
+		out<<str<<endl;
+	       /*由于整行的读入所以还要补上一个回车*/
+}//--------------------------------
