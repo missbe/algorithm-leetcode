@@ -20,7 +20,7 @@ public class TwoSumSorted {
 
     private int[] twoSum(int[] numbers, int target) {
         int[] indices  = new int[2];
-        
+
         return indices;
     }
 
