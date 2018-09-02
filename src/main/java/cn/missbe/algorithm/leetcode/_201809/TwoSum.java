@@ -3,6 +3,8 @@ package cn.missbe.algorithm.leetcode._201809;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *   Description:java_code
@@ -17,7 +19,46 @@ import java.io.InputStreamReader;
  */
 
 public class TwoSum {
+    /**
+     *一遍哈希表:
+     * 时间复杂度：O(n)
+     * 空间复杂度：O(n)
+     */
+    public int[] twoSum3(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            if (map.containsKey(complement)) {
+                return new int[] { map.get(complement), i };
+            }
+            map.put(nums[i], i);
+        }
+        throw new IllegalArgumentException("No two sum solution");
+    }
 
+    /**
+     *两遍哈希表:
+     * 时间复杂度：O(n)
+     * 空间复杂度：O(n)
+     */
+    public int[] twoSum2(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i], i);
+        }
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            if (map.containsKey(complement) && map.get(complement) != i) {
+                return new int[] { i, map.get(complement) };
+            }
+        }
+        throw new IllegalArgumentException("No two sum solution");
+    }
+    /**
+     * 暴力法:
+     * 时间复杂度：O(n^2)
+     * 空间复杂度：O(1)
+     */
     private int[] twoSum(int[] nums, int target) {
         int[] indices = new int[2];
         int length = nums.length;
